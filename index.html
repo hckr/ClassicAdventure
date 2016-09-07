@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+    <script src="js/game.js"></script>
+    <script>
+        require(['game'], function(game) {
+            new game.Game(800, 600).appendTo(document.body);
+        });
+    </script>
+</body>
+</html>
