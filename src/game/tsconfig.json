@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "outFile": "../../dist/js/game.js",
+        "sourceMap": true
+    },
+    "files": [
+        "game.ts"
+    ]
+}

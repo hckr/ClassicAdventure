@@ -1,0 +1,15 @@
+{
+    "version": "0.1.0",
+    "command": "tsc",
+    "isShellCommand": true,
+    "showOutput": "silent",
+    "suppressTaskName": true,
+    "tasks": [
+        {
+            "taskName": "game",
+            "isBuildCommand": true,
+            "args": ["-p", "src/game"],
+            "problemMatcher": "$tsc"
+        }
+    ]
+}
