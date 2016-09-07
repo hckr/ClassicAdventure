@@ -1,12 +1,4 @@
-interface Pos {
-    x: number;
-    y: number;
-}
-
-interface Size {
-    width: number;
-    height: number;
-}
+import { Pos, Size } from 'sharedInterfaces'
 
 interface SpriteInfo {
     spriteSheet: HTMLImageElement,
@@ -28,9 +20,11 @@ export class SpritesManager {
 
     drawSprite(name: string, position: Pos) {
         let spriteInfo = this.spritesInfo[name];
-        this.context.drawImage(spriteInfo.spriteSheet,
-                               spriteInfo.offset.x, spriteInfo.offset.y,
-                               spriteInfo.size.width, spriteInfo.size.height);
+        if(spriteInfo.spriteSheet.complete) {
+            this.context.drawImage(spriteInfo.spriteSheet,
+                                spriteInfo.offset.x, spriteInfo.offset.y,
+                                spriteInfo.size.width, spriteInfo.size.height);
+        }
     }
 
     private loadSpriteSheet(name: string, path: string) {
