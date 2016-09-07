@@ -6,11 +6,11 @@ interface SpriteInfo {
     size: Size
 }
 
-export class SpritesManager {
-    private spriteSheets: { [name: string]: HTMLImageElement };
-    private spritesInfo: { [name: string]: SpriteInfo };
+class SpritesManager {
+    private spriteSheets: { [name: string]: HTMLImageElement } = {};
+    private spritesInfo: { [name: string]: SpriteInfo } = {};
 
-    constructor(private context: CanvasRenderingContext2D) {
+    constructor() {
         this.loadSpriteSheets();
 
         this.addSpriteInfo('flyDead', 'enemies', { x: 143, y: 0 }, { width: 59, height: 33 });
@@ -18,12 +18,14 @@ export class SpritesManager {
         this.addSpriteInfo('flyFly2', 'enemies', { x: 0, y: 0 }, { width: 75, height: 31 });
     }
 
-    drawSprite(name: string, position: Pos) {
+    drawSpriteInContext(name: string, context: CanvasRenderingContext2D, offset: Pos = { x: 0, y: 0 }) {
         let spriteInfo = this.spritesInfo[name];
         if(spriteInfo.spriteSheet.complete) {
-            this.context.drawImage(spriteInfo.spriteSheet,
-                                spriteInfo.offset.x, spriteInfo.offset.y,
-                                spriteInfo.size.width, spriteInfo.size.height);
+            context.drawImage(spriteInfo.spriteSheet,
+                              spriteInfo.offset.x, spriteInfo.offset.y,
+                              spriteInfo.size.width, spriteInfo.size.height,
+                              offset.x, offset.y,
+                              spriteInfo.size.width, spriteInfo.size.height);
         }
     }
 
@@ -45,3 +47,5 @@ export class SpritesManager {
         };
     }
 }
+
+export let spritesManager = new SpritesManager();
